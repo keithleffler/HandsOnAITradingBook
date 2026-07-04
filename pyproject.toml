@@ -1,0 +1,56 @@
+[project]
+name = "handsonaitradingbook"
+version = "0.1.0"
+description = "Local uv environment for the 'Hands-On AI Trading with Python, QuantConnect and AWS' examples"
+readme = "README.md"
+requires-python = ">=3.12"
+
+# Core scientific / ML stack used across most examples. These are the
+# pip-installable libraries the book's code imports directly.
+#
+# NOTE: `AlgorithmImports` and `QuantConnect.PredictNowNET` are NOT on PyPI —
+# they are provided by the QuantConnect LEAN engine at runtime, so the
+# main.py / research.ipynb files are meant to run on QuantConnect
+# Cloud / Local Platform, not in this environment.
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "mplfinance",
+    "scikit-learn",
+    "statsmodels",
+    "lightgbm",
+    "hmmlearn",
+    "PyWavelets",
+    "arch",
+    "hurst",
+    "sweetviz",
+    "joblib",
+    "pytz",
+    "python-dateutil",
+    "openai",
+]
+
+[dependency-groups]
+# Heavy deep-learning libraries, used by only a handful of examples
+# (Temporal CNN, FinBERT, Amazon Chronos, RL hedging). Multi-GB download.
+# Install with:  uv sync --group deep-learning
+deep-learning = [
+    "torch",
+    "tensorflow",
+    "keras",
+    "transformers",
+    "datasets",
+    "gluonts",
+    "chronos-forecasting",
+]
+
+# Jupyter tooling for opening the research.ipynb notebooks locally.
+# Install with:  uv sync --group notebook
+notebook = [
+    "jupyter",
+    "ipykernel",
+]
